@@ -13,10 +13,11 @@ class PlotData:
     ma: Sequence[float]
     inf: Sequence[float]
     sup: Sequence[float] | None
+    legend: bool = False
 
     def plot(self):
         if self.solid:
-            plt.plot(self.ma, self.inf, lw=2.5, c=self.color)
+            plt.plot(self.ma, self.inf, lw=2.5, c=self.color, label = self.name.replace('\n', ' '))
             if self.sup is not None:
                 plt.plot(self.ma, self.sup, lw=2.5, c=self.color)
                 plt.fill_between(self.ma, self.inf, self.sup, color=self.color, alpha=0.2)
@@ -24,7 +25,8 @@ class PlotData:
             plt.plot(self.ma, self.inf, ls = 'dahsed', c=self.color)
             if self.sup is not None:
                 plt.plot(self.ma, self.sup, ls='dashed', c=self.color)
-        plt.annotate(self.name, self.textpos, fontsize=14, c=self.color)
+        if not self.legend:
+            plt.annotate(self.name, self.textpos, fontsize=14, c=self.color)
 
 def erange(start, end):
     for i in range(start, end):
@@ -40,10 +42,12 @@ def make_plot(plots: Iterable[PlotData],
               lep: str,
               title: str | None = None,
               limx: tuple[float] = (1e-3, 20),
-              limy: tuple[float] = (5e-2, 1e5)
+              limy: tuple[float] = (5e-2, 1e5),
+              legend: bool = False
              ):
     fig = plt.figure(figsize=(8, 6))
     for pl in plots:
+        pl.legend = legend
         if pl.sup is None:
             pl.sup = [1.02*limy[1]]*len(pl.ma)
         pl.plot()
@@ -58,5 +62,7 @@ def make_plot(plots: Iterable[PlotData],
     plt.yticks([10**x for x in range(int(log10(limy[0])), 1+int(log10(limy[1])))], labels=erange(int(log10(limy[0])), 1+int(log10(limy[1]))),fontsize=16)
     if title is not None:
         plt.title(title, fontsize=16)
+    if legend:
+        plt.legend(fontsize=14)
     plt.tight_layout(pad=0.5)
     plt.savefig(filepath)
