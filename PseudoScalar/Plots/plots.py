@@ -28,6 +28,25 @@ class PlotData:
         if not self.legend:
             plt.annotate(self.name, self.textpos, fontsize=14, c=self.color)
 
+@dataclass
+class PlotDataGauge:
+    name: str
+    color: str|tuple[int, int, int]
+    textpos:tuple[int, int]
+    ma: Sequence[float]
+    nogauge: Sequence[float]
+    gaugeplus: Sequence[float]
+    gaugeminus: Sequence[float]
+    legend: bool = False
+    sup = None
+
+    def plot(self):
+        plt.plot(self.ma, self.nogauge, lw=2.5, c=self.color, label = self.name.replace('\n', ' '))
+        plt.plot(self.ma, self.gaugeplus, lw=1.5, ls='dotted', c=self.color, label = self.name.replace('\n', ' '))
+        plt.plot(self.ma, self.gaugeminus, lw=1.5, ls='dashed', c=self.color, label = self.name.replace('\n', ' '))
+        if not self.legend:
+            plt.annotate(self.name, self.textpos, fontsize=14, c=self.color)
+
 def erange(start, end):
     for i in range(start, end):
         if i ==0 :

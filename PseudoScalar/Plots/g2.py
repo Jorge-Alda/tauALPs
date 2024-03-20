@@ -3,9 +3,10 @@ import pandas as pd
 
 df_g2e_Be = pd.read_csv('../data/anomalous_moments/g2e_Be.csv')
 df_g2e_Cs = pd.read_csv('../data/anomalous_moments/g2e_Cs.csv')
-df_g2e = pd.concat([df_g2e_Cs, df_g2e_Be], ignore_index=True)
+df_g2e = pd.read_csv('../data/anomalous_moments/g2e.csv')
 df_g2mu = pd.read_csv('../data/anomalous_moments/g2mu.csv')
 df_g2tau_lfu = pd.read_csv('../data/anomalous_moments/g2tau_lfu.csv')
+df_g2_cgg = pd.read_csv('../data/anomalous_moments/g2_cgg.csv')
 
 g2e = plots.PlotData(
     r'$(g-2)_e$',
@@ -13,7 +14,7 @@ g2e = plots.PlotData(
     (1.5e-3, 20),
     True,
     df_g2e['ma_GeV'],
-    df_g2e['c_g2e'],
+    df_g2e['cl_g2e'],
     None
 )
 
@@ -87,5 +88,46 @@ CMS_g2tau = plots.PlotData(
     None
 )
 
+cgg_g2e = plots.PlotDataGauge(
+    r'$(g-2)_e$',
+    'darkgray',
+    (1.5e-1, 1e2),
+    df_g2_cgg['ma_GeV'],
+    df_g2e['cl_g2e'],
+    df_g2_cgg['cl_g2e+cgg'],
+    df_g2_cgg['cl_g2e-cgg'],
+)
+
+cgg_g2mu = plots.PlotDataGauge(
+    r'$(g-2)_\mu$',
+    'chocolate',
+    (0.6, 14),
+    df_g2_cgg['ma_GeV'],
+    df_g2mu['c_g2mu'],
+    df_g2_cgg['cl_g2mu+cgg'],
+    df_g2_cgg['cl_g2mu-cgg'],
+)
+
+cgg_g2tauATLAS = plots.PlotDataGauge(
+    r'$(g-2)_\tau$' + '\n(ATLAS, ' + r'$q\bar{q}\to \tau^+\tau^-$)',
+    'tab:green',
+    (1.6, 200),
+    df_g2_cgg['ma_GeV'],
+    df_g2tau_lfu['c_g2tau_ATLAS'],
+    df_g2_cgg['cl_g2tauATLAS+cgg'],
+    df_g2_cgg['cl_g2tauATLAS-cgg'],
+)
+
+cgg_g2tauBelleII = plots.PlotDataGauge(
+    r'$(g-2)_\tau$' + '\n(Belle II)',
+    'darkred',
+    (30, 7),
+    df_g2_cgg['ma_GeV'],
+    df_g2tau_lfu['c_g2tau_BelleII'],
+    df_g2_cgg['cl_g2tauBII+cgg'],
+    df_g2_cgg['cl_g2tauBII-cgg'],
+)
+
 if __name__ == '__main__':
     plots.make_plot([g2e, g2mu, BelleII_g2tau, ATLAS_g2tau, ATLASPb_g2tau, CMS_g2tau], 'g2_lfu.pdf', r'\ell', r'$(g-2)_\ell$, Leptophilic LFU ALP')
+    plots.make_plot([cgg_g2e, cgg_g2mu, cgg_g2tauATLAS, cgg_g2tauBelleII], 'g2_cgg.pdf', r'\ell', r'$(g-2)_\ell$, $c_{\gamma\gamma}^0\in [-5, +5] c_\ell$, $c_{\gamma Z}^0 = 0$', limx=(1e-1, 1e3), limy=(1, 1e4))
