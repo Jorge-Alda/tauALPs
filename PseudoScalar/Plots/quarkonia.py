@@ -99,7 +99,7 @@ BaBar_Y3Smu = plots.PlotData(
 BaBar_Y3Stot = plots.PlotData(
     r'$\Upsilon(3S)\to\gamma a$' + '\n(BaBar)',
     'tab:green',
-    (1.2, 100),
+    (0.8, 100),
     True,
     df_BaBar_Y3Stot['ma_GeV'],
     df_BaBar_Y3Stot['cl'],
@@ -157,5 +157,5 @@ BelleII_Y4S3g_tau = plots.PlotData(
 )
 
 if __name__ == '__main__':
-    plots.make_plot([BaBar_Y3Smu, BaBar_Y2Smu, BaBar_Y1Smu, Belle_Y1Smu, BaBar_Y3Stau, BaBar_Y1Stau, Belle_Y1Stau, BESIII_Jpsimu, BelleII_Y4S3g_lfu], 'quarkonia_lfu.pdf', r'\ell', 'Quarkonia decays (LFU leptophilic ALP)', legend=True)
-    plots.make_plot([BaBar_Y3Stau, BaBar_Y1Stau, Belle_Y1Stau, BelleII_Y4S3g_tau, BESIII_Jpsi3g_tau], 'quarkonia_tau.pdf', r'\tau', r'Quarkonia decays ($\tau$-philic ALP)', legend=True)
+    plots.make_plot([BaBar_Y3Smu, BaBar_Y2Smu, BaBar_Y1Smu, Belle_Y1Smu, BaBar_Y3Stau, BaBar_Y1Stau, Belle_Y1Stau, BESIII_Jpsimu, BelleII_Y4S3g_lfu], 'quarkonia_lfu.pdf', r'\ell', 'Quarkonia decays (LFU leptophilic ALP)', legend=True, limx=(1e-1, 20), legend_args={'fontsize': 12, 'ncols': 2, 'loc': 'lower left'})
+    plots.make_plot([BaBar_Y3Stau, BaBar_Y1Stau, Belle_Y1Stau, BelleII_Y4S3g_tau, BESIII_Jpsi3g_tau], 'quarkonia_tau.pdf', r'\tau', r'Quarkonia decays ($\tau$-philic ALP)', legend=True, limx=(1e-1, 20), legend_args={'fontsize': 14, 'loc': 'lower left'})
