@@ -42,8 +42,8 @@ class PlotDataGauge:
 
     def plot(self):
         plt.plot(self.ma, self.nogauge, lw=2.5, c=self.color, label = self.name.replace('\n', ' '))
-        plt.plot(self.ma, self.gaugeplus, lw=1.5, ls='dotted', c=self.color, label = self.name.replace('\n', ' '))
-        plt.plot(self.ma, self.gaugeminus, lw=1.5, ls='dashed', c=self.color, label = self.name.replace('\n', ' '))
+        plt.plot(self.ma, self.gaugeplus, lw=1.5, ls='dotted', c=self.color)
+        plt.plot(self.ma, self.gaugeminus, lw=1.5, ls='dashed', c=self.color)
         if not self.legend:
             plt.annotate(self.name, self.textpos, fontsize=14, c=self.color)
 

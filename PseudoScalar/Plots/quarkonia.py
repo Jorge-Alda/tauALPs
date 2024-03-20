@@ -14,7 +14,11 @@ df_BelleII_Y4S3g_lfu = pd.read_csv('../data/quarkonia/BelleII_Y4S3g_lfu.csv')
 df_BESIII_Jpsi3g_lfu = pd.read_csv('../data/quarkonia/BESIII_Jpsi3g_lfu.csv')
 df_BelleII_Y4S3g_tau = pd.read_csv('../data/quarkonia/BelleII_Y4S3g_tau.csv')
 df_BESIII_Jpsi3g_tau = pd.read_csv('../data/quarkonia/BESIII_Jpsi3g_tau.csv')
-
+df_BaBar_Y3Stau_cgg = pd.read_csv('../data/quarkonia/BaBar_Y3Stautau_cgg.csv')
+df_BaBar_Y3Smu_cgg = pd.read_csv('../data/quarkonia/BaBar_Y3Smumu_cgg.csv')
+df_BelleII_Y4S3g_lfu_cgg = pd.read_csv('../data/quarkonia/BelleII_Y4S3g_lfu_cgg.csv')
+df_BaBar_Y3Stau_tp_cgg = pd.read_csv('../data/quarkonia/BaBar_Y3Stautau_tp_cgg.csv')
+df_BelleII_Y4S3g_tau_cgg = pd.read_csv('../data/quarkonia/BelleII_Y4S3g_tau_cgg.csv')
 
 Belle_Y1Stau = plots.PlotData(
     r'$\Upsilon(1S)\to\gamma a(\to\tau^+\tau^-)$' + '\n(Belle)',
@@ -148,7 +152,7 @@ BESIII_Jpsi3g_tau = plots.PlotData(
 
 BelleII_Y4S3g_tau = plots.PlotData(
     r'$\Upsilon(4S)\to\gamma a(\to\gamma\gamma)$' + '\n(Belle II)',
-    'tab:purple',
+    'tab:cyan',
     (0.1, 1e3),
     True,
     df_BelleII_Y4S3g_tau['ma_GeV'],
@@ -156,6 +160,63 @@ BelleII_Y4S3g_tau = plots.PlotData(
     None
 )
 
+BaBar_Y3Stau_cgg = plots.PlotDataGauge(
+    r'$\Upsilon(3S)\to\gamma a(\to\tau^+\tau^-)$' + '\n(BaBar)',
+    'tab:green',
+    (1.2, 100),
+    df_BaBar_Y3Stau['ma_GeV'],
+    df_BaBar_Y3Stau['cl'],
+    df_BaBar_Y3Stau_cgg['cl+gg0'],
+    df_BaBar_Y3Stau_cgg['cl-gg0'],
+    None
+)
+
+BaBar_Y3Smu_cgg = plots.PlotDataGauge(
+    r'$\Upsilon(3S)\to\gamma a(\to\mu^+\mu^-)$' + '\n(BaBar)',
+    'tab:red',
+    (0.1, 1e3),
+    df_BaBar_Y3Smu['ma_GeV'],
+    df_BaBar_Y3Smu['cl'],
+    df_BaBar_Y3Smu_cgg['cl+gg0'],
+    df_BaBar_Y3Smu_cgg['cl-gg0'],
+    None
+)
+
+BelleII_Y4S3g_lfu_cgg = plots.PlotDataGauge(
+    r'$\Upsilon(4S)\to\gamma a(\to\gamma\gamma)$' + '\n(Belle II)',
+    'tab:cyan',
+    (0.1, 1e3),
+    df_BelleII_Y4S3g_lfu['ma_GeV'],
+    df_BelleII_Y4S3g_lfu['cl'],
+    df_BelleII_Y4S3g_lfu_cgg['cl+gg0'],
+    df_BelleII_Y4S3g_lfu_cgg['cl-gg0'],
+    None
+)
+
+BaBar_Y3Stau_tp_cgg = plots.PlotDataGauge(
+    r'$\Upsilon(3S)\to\gamma a(\to\tau^+\tau^-)$' + '\n(BaBar)',
+    'tab:green',
+    (1.2, 100),
+    df_BaBar_Y3Stau['ma_GeV'],
+    df_BaBar_Y3Stau['cl'],
+    df_BaBar_Y3Stau_tp_cgg['cl+gg0'],
+    df_BaBar_Y3Stau_tp_cgg['cl-gg0'],
+    None
+)
+
+BelleII_Y4S3g_tau_cgg = plots.PlotDataGauge(
+    r'$\Upsilon(4S)\to\gamma a(\to\gamma\gamma)$' + '\n(Belle II)',
+    'tab:cyan',
+    (0.1, 1e3),
+    df_BelleII_Y4S3g_tau['ma_GeV'],
+    df_BelleII_Y4S3g_tau['cl'],
+    df_BelleII_Y4S3g_tau_cgg['cl+gg0'],
+    df_BelleII_Y4S3g_tau_cgg['cl-gg0'],
+    None
+)
+
 if __name__ == '__main__':
     plots.make_plot([BaBar_Y3Smu, BaBar_Y2Smu, BaBar_Y1Smu, Belle_Y1Smu, BaBar_Y3Stau, BaBar_Y1Stau, Belle_Y1Stau, BESIII_Jpsimu, BelleII_Y4S3g_lfu], 'quarkonia_lfu.pdf', r'\ell', 'Quarkonia decays (LFU leptophilic ALP)', legend=True, limx=(1e-1, 20), legend_args={'fontsize': 12, 'ncols': 2, 'loc': 'lower left'})
     plots.make_plot([BaBar_Y3Stau, BaBar_Y1Stau, Belle_Y1Stau, BelleII_Y4S3g_tau, BESIII_Jpsi3g_tau], 'quarkonia_tau.pdf', r'\tau', r'Quarkonia decays ($\tau$-philic ALP)', legend=True, limx=(1e-1, 20), legend_args={'fontsize': 14, 'loc': 'lower left'})
+    plots.make_plot([BaBar_Y3Smu_cgg, BaBar_Y3Stau_cgg, BelleII_Y4S3g_lfu_cgg], 'quarkonia_lfu_cgg.pdf', r'\ell', r'Quarkonia decays (LFU ALP, $c_{\gamma\gamma}^0 \in [-5, +5] c_\ell$)', legend=True, limx=(1e-1, 20), legend_args={'fontsize': 14, 'loc': 'lower left'})
+    plots.make_plot([BaBar_Y3Stau_tp_cgg, BelleII_Y4S3g_tau_cgg], 'quarkonia_tp_cgg.pdf', r'\tau', r'Quarkonia decays ($\tau$-philic ALP, $c_{\gamma\gamma}^0 \in [-5, +5] c_\ell$)', legend=True, limx=(1e-1, 20), legend_args={'fontsize': 14, 'loc': 'lower left'})
