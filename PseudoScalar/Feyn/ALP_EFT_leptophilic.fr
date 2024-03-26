@@ -1,0 +1,107 @@
+(* ************************** *)
+(* *****  Information   ***** *)
+(* ************************** *)
+M$ModelName = "ALP_leptophilic";
+
+M$Information = {
+  Authors      -> {"J. Alda"},
+  Version      -> "1.0",
+  Date         -> "24. 03. 2024",
+  Institutions -> {"Universita Padova/INFN"},
+  Emails       -> {"jorge.alda@pd.infn.it"}
+};
+
+FeynmanGauge = True;
+
+(* ************************** *)
+(* **** Particle classes **** *)
+(* ************************** *)
+M$ClassesDescription = {
+
+
+  S[105] == {
+    ClassName        -> ALP,
+    SelfConjugate    -> True,
+    Mass             -> 0,
+    FullName         -> "light",
+    Width            -> 0
+  }
+
+};
+
+(* ************************** *)
+(* *****   Parameters   ***** *)
+(* ************************** *)
+M$Parameters = {
+
+  (* External parameters *)
+
+  (* Internal Parameters *)
+
+  
+  cWW == {
+    ParameterType     -> Internal, 
+    ComplexParameter  -> False
+  },
+
+  cFF == {
+    ParameterType     -> Internal, 
+    ComplexParameter  -> False
+  },
+
+  cZZ == {
+    ParameterType     -> Internal, 
+    ComplexParameter  -> False
+  },
+
+  cFZ == {
+    ParameterType     -> Internal, 
+    ComplexParameter  -> False
+  },
+
+  cL == {
+    ParameterType     -> Internal, 
+    ComplexParameter  -> False
+  },
+
+  cEWV == {
+    ParameterType     -> Internal,
+    ComplexParameter  -> False
+  },
+
+  mALP == {
+    ParameterType     -> Internal,
+    ComplexParameter  -> False
+  }
+
+
+};
+
+
+(* ************************** *)
+(* *****   Lagrangian   ***** *)
+(* ************************** *)
+
+
+
+
+L4ALP := Block[{mu},
+    del[ALP,mu]*del[ALP,mu]/2-mALP ALP^2/2
+];
+
+L5ALP := Block[{mu,nu},
+     cWW ALP FS[W,mu,nu] Dual[FS][HC[W],mu,nu]
+     + cFF ALP FS[A,mu,nu] Dual[FS][A,mu,nu]
+     + cZZ ALP FS[Z,mu,nu] Dual[FS][Z,mu,nu]
+     + cFZ ALP FS[A,mu,nu] Dual[FS][Z,mu,nu]
+     + cL ALP (right[lbar].left[l] - left[lbar].right[l])
+     + cEWV ALP (W[mu] right[vlbar].Ga[mu].l + HC[W[mu]] lbar.Ga[mu].left[vl])
+];
+
+
+LNP := L4ALP + L5ALP;
+
+
+Ltot := LSM + LNP
+
+
