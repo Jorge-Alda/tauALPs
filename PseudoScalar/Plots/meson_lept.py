@@ -1,42 +1,20 @@
 import plots
 import pandas as pd
 
-df_invisible = pd.read_csv('../data/meson_lept/invisible_tau.csv')
+#df_invisible = pd.read_csv('../data/meson_lept/invisible_tau.csv')
 df_pienua_displaced = pd.read_csv('../data/meson_lept/pienua_displaced.csv')
-df_visible = pd.read_csv('../data/meson_lept/visible.csv')
+df_B_mu_mumu = pd.read_csv('../data/meson_lept/B_mu_mumu.csv')
+df_K_mu_mumu = pd.read_csv('../data/meson_lept/K_mu_mumu.csv')
+df_K_e_mumu = pd.read_csv('../data/meson_lept/K_e_mumu.csv')
+df_K_mu_ee = pd.read_csv('../data/meson_lept/K_mu_ee.csv')
+df_K_e_ee = pd.read_csv('../data/meson_lept/K_e_ee.csv')
 
-invisible_Btau = plots.PlotData(
-    r'$B^+\to\tau^+\nu_\tau a$',
-    'g',
-    (1,1),
-    True,
-    df_invisible['ma_GeV'],
-    df_invisible['ctau_Blnua'],
-    None,
-    False
-)
-
-invisible_Dtau = plots.PlotData(
-    r'$D^+\to\tau^+\nu_\tau a$',
-    'r',
-    (1,1),
-    True,
-    df_invisible['ma_GeV'],
-    df_invisible['ctau_Dlnua'],
-    None,
-    False
-)
-
-invisible_Dstau = plots.PlotData(
-    r'$D_s^+\to\tau^+\nu_\tau a$',
-    'b',
-    (1,1),
-    True,
-    df_invisible['ma_GeV'],
-    df_invisible['ctau_Dslnua'],
-    None,
-    False
-)
+df_pienua_displaced_ewv = pd.read_csv('../data/meson_lept/pienua_displaced_ewv.csv')
+df_B_mu_mumu_ewv = pd.read_csv('../data/meson_lept/B_mu_mumu_ewv.csv')
+df_K_mu_mumu_ewv = pd.read_csv('../data/meson_lept/K_mu_mumu_ewv.csv')
+df_K_e_mumu_ewv = pd.read_csv('../data/meson_lept/K_e_mumu_ewv.csv')
+df_K_mu_ee_ewv = pd.read_csv('../data/meson_lept/K_mu_ee_ewv.csv')
+df_K_e_ee_ewv = pd.read_csv('../data/meson_lept/K_e_ee_ewv.csv')
 
 pienua_displaced = plots.PlotData(
     r'$\pi^+ \to e^+ \nu a(\to e^+ e^-)$',
@@ -48,46 +26,118 @@ pienua_displaced = plots.PlotData(
     df_pienua_displaced['cl_sup'],
 )
 
-visible_Klee = plots.PlotData(
-    r'$K^+\to \ell^+ \nu_\ell e^+ e^-$',
+visible_Keee = plots.PlotData(
+    r'$K^+\to e^+ \nu_e e^+ e^-$',
     'tab:orange',
-    (1e-2, 2),
+    (1e-2, 500),
     True,
-    df_visible['ma_GeV'],
-    df_visible['cl_Keee'],
+    df_K_e_ee['ma_GeV'],
+    df_K_e_ee['cl'],
+    None
+)
+
+visible_Kmuee = plots.PlotData(
+    r'$K^+\to \mu^+ \nu_\ell e^+ e^-$',
+    'tab:cyan',
+    (1e-2, 4),
+    True,
+    df_K_mu_ee['ma_GeV'],
+    df_K_mu_ee['cl'],
     None
 )
 
 visible_Kemumu = plots.PlotData(
     r'$K^+\to e^+ \nu_e \mu^+ \mu^-$',
     'tab:green',
-    (0.27, 10),
+    (0.4, 6e3),
     True,
-    df_visible['ma_GeV'],
-    df_visible['cl_Kemumu'],
+    df_K_e_mumu['ma_GeV'],
+    df_K_e_mumu['cl'],
     None
 )
 
 visible_Kmumumu = plots.PlotData(
     r'$K^+\to \mu^+ \nu_\mu \mu^+ \mu^-$',
     'tab:red',
-    (0.4, 4e2),
+    (0.3, 4e2),
     True,
-    df_visible['ma_GeV'],
-    df_visible['cl_Kmumumu'],
+    df_K_mu_mumu['ma_GeV'],
+    df_K_mu_mumu['cl'],
     None
 )
 
 visible_Bmumumu = plots.PlotData(
     r'$B^+\to \mu^+ \nu_\mu \mu^+ \mu^-$',
     'tab:purple',
-    (0.5, 70),
+    (0.5, 900),
     True,
-    df_visible['ma_GeV'],
-    df_visible['cl_Bmumumu'],
+    df_B_mu_mumu['ma_GeV'],
+    df_B_mu_mumu['cl'],
+    None
+)
+
+## EW violating
+
+pienua_displaced_ewv = plots.PlotData(
+    r'$\pi^+ \to e^+ \nu a(\to e^+ e^-)$',
+    'tab:blue',
+    (2e-3, 1e2),
+    True,
+    df_pienua_displaced_ewv['ma_GeV'],
+    df_pienua_displaced_ewv['cl_inf'],
+    df_pienua_displaced_ewv['cl_sup'],
+)
+
+visible_Keee_ewv = plots.PlotData(
+    r'$K^+\to e^+ \nu_e e^+ e^-$',
+    'tab:orange',
+    (1e-2, 2),
+    True,
+    df_K_e_ee_ewv['ma_GeV'],
+    df_K_e_ee_ewv['cl'],
+    None
+)
+
+visible_Kmuee_ewv = plots.PlotData(
+    r'$K^+\to \mu^+ \nu_\ell e^+ e^-$',
+    'tab:cyan',
+    (2e-3, 4),
+    True,
+    df_K_mu_ee_ewv['ma_GeV'],
+    df_K_mu_ee_ewv['cl'],
+    None
+)
+
+visible_Kemumu_ewv = plots.PlotData(
+    r'$K^+\to e^+ \nu_e \mu^+ \mu^-$',
+    'tab:green',
+    (0.3, 10),
+    True,
+    df_K_e_mumu_ewv['ma_GeV'],
+    df_K_e_mumu_ewv['cl'],
+    None
+)
+
+visible_Kmumumu_ewv = plots.PlotData(
+    r'$K^+\to \mu^+ \nu_\mu \mu^+ \mu^-$',
+    'tab:red',
+    (5.5e-2, 4e2),
+    True,
+    df_K_mu_mumu_ewv['ma_GeV'],
+    df_K_mu_mumu_ewv['cl'],
+    None
+)
+
+visible_Bmumumu_ewv = plots.PlotData(
+    r'$B^+\to \mu^+ \nu_\mu \mu^+ \mu^-$',
+    'tab:purple',
+    (0.5, 900),
+    True,
+    df_B_mu_mumu_ewv['ma_GeV'],
+    df_B_mu_mumu_ewv['cl'],
     None
 )
 
 if __name__ == '__main__':
-    plots.make_plot([invisible_Btau, invisible_Dstau, invisible_Dtau], 'meson_lept_invisible.pdf', r'\tau', limx=(1e-3, 3), limy=(10, 1e4), legend=True)
-    plots.make_plot([pienua_displaced, visible_Klee, visible_Kemumu, visible_Kmumumu, visible_Bmumumu], 'meson_lept_visible.pdf', r'\ell', limx=(1e-3, 3), limy=(1, 1e4))
+    plots.make_plot([pienua_displaced, visible_Keee, visible_Kmuee, visible_Kemumu, visible_Kmumumu, visible_Bmumumu], 'meson_lept_visible.pdf', r'\ell}\chi_{A', limx=(1e-3, 3), limy=(1, 1e4))
+    plots.make_plot([pienua_displaced_ewv, visible_Keee_ewv, visible_Kmuee_ewv, visible_Kemumu_ewv, visible_Kmumumu_ewv, visible_Bmumumu_ewv], 'meson_lept_visible_ewv.pdf', r'\ell}\Delta\chi{', limx=(1e-3, 3), limy=(1, 1e4))
