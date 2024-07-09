@@ -29,6 +29,26 @@ class PlotData:
             plt.annotate(self.name, self.textpos, fontsize=14, c=self.color)
 
 @dataclass
+class PlotDataClosed:
+    name: str
+    color: str|tuple[int, int, int]
+    textpos:tuple[int, int]
+    solid: bool
+    ma: Sequence[float]
+    inf: Sequence[float]
+    sup: Sequence[float] | None = None
+    legend: bool = False
+
+    def plot(self):
+        if self.solid:
+            plt.plot(self.ma, self.inf, lw=2.5, c=self.color, label = self.name.replace('\n', ' '))
+            plt.fill(self.ma, self.inf, color=self.color, alpha=0.2)
+        else:
+            plt.plot(self.ma, self.inf, ls = 'dashed', c=self.color)
+        if not self.legend:
+            plt.annotate(self.name, self.textpos, fontsize=14, c=self.color)
+
+@dataclass
 class PlotDataGauge:
     name: str
     color: str|tuple[int, int, int]

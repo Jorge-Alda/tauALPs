@@ -66,7 +66,7 @@ gammainv = plots.PlotData(
 )
 
 gammainv_proj = plots.PlotData(
-    r'$e^+e^-\to \gamma +$ inv' + r'  (50 ab$^{-1}$)',
+    r'$e^+e^-\to \gamma +$ inv' + '\n' + r'  (50 ab$^{-1}$)',
     'slategray',
     (3e-3, 1.6),
     False,
