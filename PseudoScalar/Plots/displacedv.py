@@ -31,7 +31,7 @@ LHCb_BKsa = plots.PlotData(
 LHCb_combined = plots.PlotData(
     r'$B\to K^{(*)} a(\to \mu^+\mu^-)$' + '\n(LHCb)',
     'r',
-    (1.4, 0.1),
+    (0.2, 2e-2),
     True,
     df_LHCb_combined['ma_GeV'],
     df_LHCb_combined['cl_inf'],

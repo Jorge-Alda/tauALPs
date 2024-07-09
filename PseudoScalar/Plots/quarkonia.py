@@ -51,7 +51,7 @@ BaBar_Y1Smu = plots.PlotData(
 )
 
 BaBar_Y3Stau = plots.PlotData(
-    r'$\Upsilon(3S)\to\gamma a(\to\tau^+\tau^-)$' + '\n(BaBar)',
+    r'$\Upsilon(3S)\to\gamma\tau^+\tau^-$',
     'tab:green',
     (1.2, 100),
     True,
@@ -101,9 +101,9 @@ BaBar_Y3Smu = plots.PlotData(
 )
 
 BaBar_Y3Stot = plots.PlotData(
-    r'$\Upsilon(3S)\to\gamma a$' + '\n(BaBar)',
+    r'$\Upsilon(3S)\to\gamma \ell^+\ell^-$' + '\n(BaBar)',
     'tab:green',
-    (0.8, 100),
+    (0.3, 100),
     True,
     df_BaBar_Y3Stot['ma_GeV'],
     df_BaBar_Y3Stot['cl'],

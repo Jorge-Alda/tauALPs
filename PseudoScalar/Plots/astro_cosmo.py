@@ -9,7 +9,7 @@ df_sn1987a = pd.read_csv('../data/astro_cosmo/SN1987.csv')
 sn1987a = plots.PlotData(
     'SN 1987A',
     'k',
-    (2e-3, 0.2),
+    (2e-3, 1e-2),
     True,
     df_sn1987a['ma_GeV'],
     df_sn1987a['gae_inf']/me,

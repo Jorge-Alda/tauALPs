@@ -18,7 +18,7 @@ df_K_e_ee_ewv = pd.read_csv('../data/meson_lept/K_e_ee_ewv.csv')
 
 pienua_displaced = plots.PlotData(
     r'$\pi^+ \to e^+ \nu a(\to e^+ e^-)$',
-    'tab:blue',
+    'tab:cyan',
     (2e-3, 1e2),
     True,
     df_pienua_displaced['ma_GeV'],
@@ -37,9 +37,9 @@ visible_Keee = plots.PlotData(
 )
 
 visible_Kmuee = plots.PlotData(
-    r'$K^+\to \mu^+ \nu_\ell e^+ e^-$',
-    'tab:cyan',
-    (1e-2, 4),
+    r'$K^+\to \mu^+ \nu_\mu e^+ e^-$',
+    'tab:blue',
+    (1e-2, 17),
     True,
     df_K_mu_ee['ma_GeV'],
     df_K_mu_ee['cl'],
