@@ -15,7 +15,7 @@ sn_gamma_lfu = plots.PlotDataClosed(
     (2e-3, 3e-7),
     True,
     df_sn_gamma['ma_GeV'],
-    df_sn_gamma['cl_TeV-1'],
+    df_sn_gamma['gl'],
 )
 
 sn_nu_lfu = plots.PlotDataClosed(
@@ -24,7 +24,7 @@ sn_nu_lfu = plots.PlotDataClosed(
     (1e-2, 1),
     True,
     df_sn_nu['ma_GeV'],
-    df_sn_nu['cl_TeV-1'],
+    df_sn_nu['gl'],
 )
 
 sn_pvo_lfu = plots.PlotDataClosed(
@@ -33,7 +33,7 @@ sn_pvo_lfu = plots.PlotDataClosed(
     (1e-2, 2e2),
     True,
     df_sn_pvo['ma_GeV'],
-    df_sn_pvo['cl_TeV-1'],
+    df_sn_pvo['gl'],
 )
 
 sne_lfu = plots.PlotDataClosed(
@@ -42,7 +42,7 @@ sne_lfu = plots.PlotDataClosed(
     (0.3, 3.5e-3),
     True,
     df_sne['ma_GeV'],
-    df_sne['cl_TeV-1'],
+    df_sne['gl'],
 )
 
 gw_fermi_lfu = plots.PlotDataClosed(
@@ -51,7 +51,7 @@ gw_fermi_lfu = plots.PlotDataClosed(
     (2e-3, 0.55e-4),
     True,
     df_gw_fermi['ma_GeV'],
-    df_gw_fermi['cl_TeV-1'],
+    df_gw_fermi['gl'],
 )
 
 
@@ -61,7 +61,7 @@ gw_fireball_lfu = plots.PlotDataClosed(
     (0.35, 1e-5),
     True,
     df_gw_fireball['ma_GeV'],
-    df_gw_fireball['cl_TeV-1'],
+    df_gw_fireball['gl'],
 )
 
 ###### Tau-philic
@@ -69,19 +69,19 @@ gw_fireball_lfu = plots.PlotDataClosed(
 sn_gamma_tau = plots.PlotDataClosed(
     'SN 1987A\n' + r'$\gamma$ ray burst',
     'forestgreen',
-    (2e-2, 6e-6),
+    (3e-3, 3e-8),
     True,
     df_sn_gamma['ma_GeV'],
-    df_sn_gamma['ctau_TeV-1'],
+    df_sn_gamma['gtau'],
 )
 
 sn_nu_tau = plots.PlotDataClosed(
     'SN 1987A\n' + r'$\nu$ signal',
     'yellowgreen',
-    (2e-3, 0.1),
+    (2e-3, 1e-4),
     True,
     df_sn_nu['ma_GeV'],
-    df_sn_nu['ctau_TeV-1'],
+    df_sn_nu['gtau'],
 )
 
 sn_pvo_tau = plots.PlotDataClosed(
@@ -90,16 +90,16 @@ sn_pvo_tau = plots.PlotDataClosed(
     (1e-2, 2e2),
     True,
     df_sn_pvo['ma_GeV'],
-    df_sn_pvo['ctau_TeV-1'],
+    df_sn_pvo['gtau'],
 )
 
 sne_tau = plots.PlotDataClosed(
     'Low energy SN',
     'lightgreen',
-    (0.52, 2e-3),
+    (0.5, 2e-6),
     True,
     df_sne['ma_GeV'],
-    df_sne['ctau_TeV-1'],
+    df_sne['gtau'],
 )
 
 gw_fermi_tau = plots.PlotDataClosed(
@@ -108,17 +108,17 @@ gw_fermi_tau = plots.PlotDataClosed(
     (0.6e-2, 2e-1),
     True,
     df_gw_fermi['ma_GeV'],
-    df_gw_fermi['ctau_TeV-1'],
+    df_gw_fermi['gtau'],
 )
 
 
 gw_fireball_tau = plots.PlotDataClosed(
     'GW170817\nFireball',
     'deepskyblue',
-    (0.4, 1e-4),
+    (0.35, 5e-8),
     True,
     df_gw_fireball['ma_GeV'],
-    df_gw_fireball['ctau_TeV-1'],
+    df_gw_fireball['gtau'],
 )
 
 if __name__ == '__main__':

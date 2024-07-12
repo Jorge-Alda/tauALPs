@@ -97,7 +97,7 @@ def make_plot(plots: Iterable[PlotData],
     plt.xlim(limx)
     plt.ylim(limy)
     plt.xlabel(r'$m_\phi$ [GeV]', fontsize=20)
-    plt.ylabel(r'$|y_{' + lep + '}|/f_\phi$ [TeV$^{-1}$]', fontsize=20)
+    plt.ylabel(r'$|g_\tau^\phi|$', fontsize=20)
     plt.xticks([10**x for x in range(int(log10(limx[0])), 1+int(log10(limx[1])))], labels=erange(int(log10(limx[0])), 1+int(log10(limx[1]))), fontsize=20)
     plt.yticks([10**x for x in range(int(log10(limy[0])), 1+int(log10(limy[1])))], labels=erange(int(log10(limy[0])), 1+int(log10(limy[1]))),fontsize=20)
     if title is not None:
