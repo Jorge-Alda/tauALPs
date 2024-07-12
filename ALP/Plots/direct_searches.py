@@ -8,7 +8,7 @@ df_Belle_tautauALP = pd.read_csv('../data/direct_searches/direct_Belle.dat', sep
 df_BelleII_tautauALP = pd.read_csv('../data/direct_searches/direct_BelleII.dat', sep='\t')
 df_BelleII_mumuALP = pd.read_csv('../data/direct_searches/BelleII_taures.csv')
 df_BaBar_gammaALP = pd.read_csv('../data/direct_searches/BaBar_darkphoton_N.csv', names=['ma_GeV', 'cl'], sep=' ').sort_values(by='ma_GeV')
-df_gammainv_inf = pd.read_csv('../data/direct_searches/gammainv_inf.csv')
+df_gammainv = pd.read_csv('../data/direct_searches/gammainv.csv')
 df_gammainv_proj = pd.read_csv('../data/direct_searches/gammainv_proj.csv')
 df_ee3gamma = pd.read_csv('../data/direct_searches/ee3gamma.csv')
 df_ee3gamma_proj = pd.read_csv('../data/direct_searches/ee3gamma_proj.csv')
@@ -55,24 +55,24 @@ BaBar_gammaALP = plots.PlotData(
     None
 )
 
-gammainv = plots.PlotData(
+gammainv = plots.PlotDataClosed(
     r'$e^+e^-\to \gamma +$ inv',
     'slategray',
     (3e-3, 12),
     True,
-    df_gammainv_inf['ma_GeV'],
-    df_gammainv_inf['cl_inf'],
-    df_gammainv_inf['cl_sup']
+    df_gammainv['ma_GeV'],
+    df_gammainv['gtau'],
+    rescale=False
 )
 
-gammainv_proj = plots.PlotData(
+gammainv_proj = plots.PlotDataClosed(
     r'$e^+e^-\to \gamma +$ inv' + '\n' + r'  (50 ab$^{-1}$)',
     'slategray',
     (3e-3, 1.6),
     False,
     df_gammainv_proj['ma_GeV'],
-    df_gammainv_proj['cl_inf'],
-    df_gammainv_proj['cl_sup']
+    df_gammainv_proj['gtau'],
+    rescale=False
 )
 
 ee3gamma = plots.PlotData(
@@ -81,8 +81,9 @@ ee3gamma = plots.PlotData(
     (3e-2, 80),
     True,
     df_ee3gamma['ma_GeV'],
-    df_ee3gamma['cl'],
-    None
+    df_ee3gamma['gtau'],
+    None,
+    rescale=False
 )
 
 ee3gamma_proj = plots.PlotData(
@@ -91,8 +92,9 @@ ee3gamma_proj = plots.PlotData(
     (13e-2, 2),
     False,
     df_ee3gamma_proj['ma_GeV'],
-    df_ee3gamma_proj['cl'],
-    None
+    df_ee3gamma_proj['gtau'],
+    None,
+    rescale=False
 )
 
 eetaugamma = plots.PlotData(

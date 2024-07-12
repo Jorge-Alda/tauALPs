@@ -91,7 +91,7 @@ sn_gamma_tau = plots.PlotDataClosed(
 sn_nu_tau = plots.PlotDataClosed(
     'SN 1987A\n' + r'$\nu$ signal',
     'yellowgreen',
-    (0.3, 10),
+    (0.2, 0.8),
     True,
     df_sn_nu['ma_GeV'],
     df_sn_nu['ctau_TeV-1'],

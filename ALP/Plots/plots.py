@@ -15,6 +15,7 @@ class PlotData:
     inf: Sequence[float]
     sup: Sequence[float] | None
     legend: bool = False
+    rescale: bool = True
 
     def plot(self):
         if self.solid:
@@ -39,6 +40,7 @@ class PlotDataClosed:
     inf: Sequence[float]
     sup: Sequence[float] | None = None
     legend: bool = False
+    rescale: bool = True
 
     def plot(self):
         if self.solid:
@@ -121,11 +123,12 @@ def make_plot_tau(plots: Iterable[PlotData],
     mtau = tau_minus.mass * 1e-6 #TeV
     for pl in plots:
         pl.legend = legend
-        pl.textpos = (pl.textpos[0], pl.textpos[1]*mtau)
-        pl.inf = array(pl.inf)*mtau
+        if pl.rescale:
+            pl.textpos = (pl.textpos[0], pl.textpos[1]*mtau)
+            pl.inf = array(pl.inf)*mtau
         if pl.sup is None:
             pl.sup = [1.02*limy[1]]*len(pl.ma)
-        else:
+        elif pl.rescale:
             pl.sup = array(pl.sup)*mtau
         pl.plot()
     ax = plt.gca()
