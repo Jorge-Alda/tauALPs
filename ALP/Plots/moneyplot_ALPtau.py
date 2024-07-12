@@ -24,4 +24,4 @@ ATLAS_g2tau_tau.color = 'purple'
 ATLAS_g2tau_tau.textpos = (1.2e-3, ATLAS_g2tau_tau.textpos[1])
 
 if __name__ == '__main__':
-    plots.make_plot([sn_gamma_tau, sn_nu_tau, sne_tau, gw_fireball_tau, BelleII_g2tau_tau, ATLAS_g2tau_tau, gammainv, ee3gamma, eetaugamma, gammainv_proj, ee3gamma_proj, eetaugamma_proj], 'moneyplot_tau_BII.pdf', r'\tau', limy=(1e-3, 1e3), limx=(1e-3, 10))
+    plots.make_plot_tau([sn_gamma_tau, sn_nu_tau, sne_tau, gw_fireball_tau, BelleII_g2tau_tau, ATLAS_g2tau_tau, gammainv, ee3gamma, eetaugamma, gammainv_proj, ee3gamma_proj, eetaugamma_proj], 'moneyplot_ALPtau.pdf', limy=(1e-6, 2), limx=(1e-3, 10))

@@ -2,7 +2,8 @@ import matplotlib.pyplot as plt
 plt.rcParams['text.usetex'] = True
 from typing import Sequence, Iterable
 from dataclasses import dataclass
-from numpy import log10, pi, sqrt
+from numpy import log10, pi, sqrt, array
+from particle.literals import tau_minus
 
 @dataclass
 class PlotData:
@@ -105,5 +106,40 @@ def make_plot(plots: Iterable[PlotData],
     if legend:
         plt.legend(**legend_args)
     plt.fill_between(limx, [sqrt(8*pi/3)*1000/1.77,sqrt(8*pi/3)*1000/1.77], [limy[1], limy[1]], color='none', edgecolor='gray', hatch='/')
+    plt.tight_layout(pad=0.5)
+    plt.savefig(filepath)
+
+def make_plot_tau(plots: Iterable[PlotData],
+              filepath: str,
+              title: str | None = None,
+              limx: tuple[float] = (1e-3, 1000),
+              limy: tuple[float] = (5e-2, 1e5),
+              legend: bool = False,
+              legend_args = {}
+             ):
+    fig = plt.figure(figsize=(8, 6))
+    mtau = tau_minus.mass * 1e-6 #TeV
+    for pl in plots:
+        pl.legend = legend
+        pl.textpos = (pl.textpos[0], pl.textpos[1]*mtau)
+        pl.inf = array(pl.inf)*mtau
+        if pl.sup is None:
+            pl.sup = [1.02*limy[1]]*len(pl.ma)
+        else:
+            pl.sup = array(pl.sup)*mtau
+        pl.plot()
+    ax = plt.gca()
+    ax.set_xscale('log')
+    ax.set_yscale('log')
+    plt.xlim(limx)
+    plt.ylim(limy)
+    plt.xlabel(r'$m_a$ [GeV]', fontsize=20)
+    plt.ylabel(r'$m_\tau|c_\tau|/f_a$', fontsize=20)
+    plt.xticks([10**x for x in range(int(log10(limx[0])), 1+int(log10(limx[1])))], labels=erange(int(log10(limx[0])), 1+int(log10(limx[1]))), fontsize=20)
+    plt.yticks([10**x for x in range(int(log10(limy[0])), 1+int(log10(limy[1])))], labels=erange(int(log10(limy[0])), 1+int(log10(limy[1]))),fontsize=20)
+    if title is not None:
+        plt.title(title, fontsize=20)
+    if legend:
+        plt.legend(**legend_args)
     plt.tight_layout(pad=0.5)
     plt.savefig(filepath)
