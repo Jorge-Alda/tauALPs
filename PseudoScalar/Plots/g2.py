@@ -8,7 +8,7 @@ df_g2tau = pd.read_csv('../data/anomalous_moments/g2tau.csv')
 BelleII_g2tau = plots.PlotData(
     r'$(g-2)_\tau$' + '\n(Belle II)',
     'purple',
-    (1.5e-3, 4e-2),
+    (1e-1, 1.8e-3),
     False,
     df_g2tau['ma_GeV'],
     df_g2tau['c_g2tau_BelleII'],
