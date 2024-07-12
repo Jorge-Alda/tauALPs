@@ -1,8 +1,5 @@
 import plots
 import pandas as pd
-import particle.literals
-
-me = particle.literals.e_minus.mass / 1e6 # TeV
 
 df_sn_gamma = pd.read_csv('../data/astro_cosmo/sn_gamma.csv')
 df_sn_nu = pd.read_csv('../data/astro_cosmo/sn_nu.csv')
@@ -72,7 +69,7 @@ gw_fireball_lfu = plots.PlotDataClosed(
 sn_gamma_tau = plots.PlotDataClosed(
     'SN 1987A\n' + r'$\gamma$ ray burst',
     'forestgreen',
-    (2e-2, 2e-3),
+    (2e-2, 6e-6),
     True,
     df_sn_gamma['ma_GeV'],
     df_sn_gamma['ctau_TeV-1'],
@@ -81,7 +78,7 @@ sn_gamma_tau = plots.PlotDataClosed(
 sn_nu_tau = plots.PlotDataClosed(
     'SN 1987A\n' + r'$\nu$ signal',
     'yellowgreen',
-    (0.3, 10),
+    (2e-3, 0.1),
     True,
     df_sn_nu['ma_GeV'],
     df_sn_nu['ctau_TeV-1'],
@@ -99,7 +96,7 @@ sn_pvo_tau = plots.PlotDataClosed(
 sne_tau = plots.PlotDataClosed(
     'Low energy SN',
     'lightgreen',
-    (0.2, 5e-2),
+    (0.52, 2e-3),
     True,
     df_sne['ma_GeV'],
     df_sne['ctau_TeV-1'],
@@ -118,7 +115,7 @@ gw_fermi_tau = plots.PlotDataClosed(
 gw_fireball_tau = plots.PlotDataClosed(
     'GW170817\nFireball',
     'deepskyblue',
-    (0.4, 1e-2),
+    (0.4, 1e-4),
     True,
     df_gw_fireball['ma_GeV'],
     df_gw_fireball['ctau_TeV-1'],
