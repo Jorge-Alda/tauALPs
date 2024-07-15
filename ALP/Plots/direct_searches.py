@@ -1,8 +1,13 @@
 import plots
 import pandas as pd
+from particle.literals import tau_minus
+import numpy as np
+from scipy.interpolate import CubicSpline
 
 fa = 1000
 vev = 246
+mtau = tau_minus.mass*1e-6 # TeV
+
 
 df_Belle_tautauALP = pd.read_csv('../data/direct_searches/direct_Belle.dat', sep='\t')
 df_BelleII_tautauALP = pd.read_csv('../data/direct_searches/direct_BelleII.dat', sep='\t')
@@ -14,6 +19,9 @@ df_ee3gamma = pd.read_csv('../data/direct_searches/ee3gamma.csv')
 df_ee3gamma_proj = pd.read_csv('../data/direct_searches/ee3gamma_proj.csv')
 df_eetaugamma = pd.read_csv('../data/direct_searches/eetaugamma.csv')
 df_eetaugamma_proj = pd.read_csv('../data/direct_searches/eetaugamma_proj.csv')
+df_ee3gamma = df_ee3gamma.sort_values(by='ma_GeV')
+int_ee3gamma = CubicSpline(df_ee3gamma['ma_GeV'], df_ee3gamma['gtau'])
+int_ee3gamma_proj = CubicSpline(df_ee3gamma_proj['ma_GeV'], df_ee3gamma_proj['gtau'])
 
 Belle_tautauALP = plots.PlotData(
     r'$e^+e^-\to \tau^+\tau^- \ell^+\ell^-$' + '\n(Belle)',
@@ -80,8 +88,8 @@ ee3gamma = plots.PlotData(
     'teal',
     (3e-2, 80),
     True,
-    df_ee3gamma['ma_GeV'],
-    df_ee3gamma['gtau'],
+    np.logspace(np.log10(min(df_ee3gamma['ma_GeV'])), np.log10(2*mtau)+3, 200),
+    [int_ee3gamma(ma) for ma in np.logspace(np.log10(min(df_ee3gamma['ma_GeV'])), np.log10(2*mtau)+3, 200)],
     None,
     rescale=False
 )
@@ -91,8 +99,8 @@ ee3gamma_proj = plots.PlotData(
     'teal',
     (13e-2, 2),
     False,
-    df_ee3gamma_proj['ma_GeV'],
-    df_ee3gamma_proj['gtau'],
+    np.logspace(np.log10(min(df_ee3gamma_proj['ma_GeV'])), np.log10(2*mtau)+3, 200),
+    [int_ee3gamma_proj(ma) for ma in np.logspace(np.log10(min(df_ee3gamma_proj['ma_GeV'])), np.log10(2*mtau)+3, 200)],
     None,
     rescale=False
 )
