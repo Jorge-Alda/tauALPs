@@ -60,7 +60,7 @@ BaBar_gammaALP = plots.PlotData(
 gammainv = plots.PlotData(
     r'$e^+e^-\to \gamma +$ inv',
     'slategray',
-    (3e-3, 12),
+    (3e-3, 16),
     True,
     df_gammainv.loc[df_gammainv['ma_GeV']<0.65]['ma_GeV'],
     df_gammainv.loc[df_gammainv['ma_GeV']<0.65]['ctau_20fb-1'],
@@ -70,7 +70,7 @@ gammainv = plots.PlotData(
 gammainv_proj = plots.PlotData(
     r'$e^+e^-\to \gamma +$ inv' + '\n' + r'  (50 ab$^{-1}$)',
     'slategray',
-    (3e-3, 1.6),
+    (3e-3, 1.5),
     False,
     df_gammainv['ma_GeV'],
     df_gammainv['ctau_50ab-1'],
@@ -80,7 +80,7 @@ gammainv_proj = plots.PlotData(
 ee3gamma = plots.PlotData(
     r'$e^+e^-\to 3\gamma$',
     'teal',
-    (3e-2, 80),
+    (0.9, 400),
     True,
     df_ee3gamma['ma_GeV'],
     df_ee3gamma['ctau_20fb-1'],
@@ -90,7 +90,7 @@ ee3gamma = plots.PlotData(
 ee3gamma_proj = plots.PlotData(
     r'$e^+e^-\to 3\gamma$' +'\n' + r'(50 ab$^{-1}$)',
     'teal',
-    (13e-2, 2),
+    (2, 10),
     False,
     df_ee3gamma['ma_GeV'],
     df_ee3gamma['ctau_50ab-1'],
@@ -100,7 +100,7 @@ ee3gamma_proj = plots.PlotData(
 eetaugamma = plots.PlotData(
     r'$e^+e^-\to \tau^+\tau^-\gamma\gamma$',
     'purple',
-    (3.4, 40),
+    (0.5, 70),
     True,
     df_eetaugamma['ma_GeV'],
     df_eetaugamma['ctau_20fb-1'],
@@ -119,3 +119,4 @@ eetaugamma_proj = plots.PlotData(
 
 if __name__ == '__main__':
     plots.make_plot([Belle_tautauALP, BelleII_tautauALP, BelleII_mumuALP, BaBar_gammaALP], 'direct_searches.pdf', r'\ell')
+    plots.make_plot([ee3gamma, ee3gamma_proj, eetaugamma, eetaugamma_proj, gammainv, gammainv_proj], 'BelleII_tau.pdf', r'\tau', limx=(1e-3, 10), limy=(0.1 ,1e3))
