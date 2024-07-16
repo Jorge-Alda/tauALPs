@@ -8,70 +8,67 @@ mtau = tau_minus.mass*1e-6
 
 
 df_gammainv = pd.read_csv('../data/direct_searches/gammainv.csv')
-df_gammainv_proj = pd.read_csv('../data/direct_searches/gammainv_proj.csv')
 df_ee3gamma = pd.read_csv('../data/direct_searches/ee3gamma.csv')
-df_ee3gamma_proj = pd.read_csv('../data/direct_searches/ee3gamma_proj.csv')
-df_eetaugamma = pd.read_csv('../data/direct_searches/eetaugamma.csv')
-df_eetaugamma_proj = pd.read_csv('../data/direct_searches/eetaugamma_proj.csv')
-df_ee3gamma = df_ee3gamma.sort_values(by='ma_GeV')
-int_ee3gamma = CubicSpline(df_ee3gamma['ma_GeV'], df_ee3gamma['gtau'])
-int_ee3gamma_proj = CubicSpline(df_ee3gamma_proj['ma_GeV'], df_ee3gamma_proj['gtau'])
+df_eetaugamma = pd.read_csv('../data/direct_searches/tautaugammagamma.csv')
 
 
-gammainv = plots.PlotDataClosed(
+gammainv = plots.PlotData(
     r'$e^+e^-\to \gamma +$ inv',
     'brown',
     (3e-3, 4e-2),
     True,
-    df_gammainv['ma_GeV'],
-    df_gammainv['gtau']
+    df_gammainv.loc[df_gammainv['ma_GeV']<1.2]['ma_GeV'],
+    df_gammainv.loc[df_gammainv['ma_GeV']<1.2]['gtau_20fb-1'],
+    df_gammainv.loc[df_gammainv['ma_GeV']<1.2]['gtau_3m']
 )
 
-gammainv_proj = plots.PlotDataClosed(
+gammainv_proj = plots.PlotData(
     r'$e^+e^-\to \gamma +$ inv' + '\n' + r'  (50 ab$^{-1}$)',
     'brown',
     (3e-3, 2e-3),
     False,
-    df_gammainv_proj['ma_GeV'],
-    df_gammainv_proj['gtau']
+    df_gammainv['ma_GeV'],
+    df_gammainv['gtau_50ab-1'],
+    df_gammainv['gtau_3m']
 )
 
 ee3gamma = plots.PlotData(
     r'$e^+e^-\to 3\gamma$',
-    'lightsalmon',
-    (0.2, 0.17),
+    'red',
+    (1.3, 2.5),
     True,
-    np.logspace(np.log10(min(df_ee3gamma['ma_GeV'])), np.log10(2*mtau)+3, 200),
-    [int_ee3gamma(ma) for ma in np.logspace(np.log10(min(df_ee3gamma['ma_GeV'])), np.log10(2*mtau)+3, 200)],
+    df_ee3gamma['ma_GeV'],
+    df_ee3gamma['gtau_20fb-1'],
     None
 )
 
 ee3gamma_proj = plots.PlotData(
     r'$e^+e^-\to 3\gamma$' +'\n' + r'(50 ab$^{-1}$)',
-    'lightsalmon',
-    (16e-2, 1.4e-2),
+    'red',
+    (2.8, 0.08),
     False,
-    np.logspace(np.log10(min(df_ee3gamma_proj['ma_GeV'])), np.log10(2*mtau)+3, 200),
-    [int_ee3gamma_proj(ma) for ma in np.logspace(np.log10(min(df_ee3gamma_proj['ma_GeV'])), np.log10(2*mtau)+3, 200)],
+    df_ee3gamma['ma_GeV'],
+    df_ee3gamma['gtau_50ab-1'],
     None
 )
 
 eetaugamma = plots.PlotData(
     r'$e^+e^-\to \tau^+\tau^-\gamma\gamma$',
-    'red',
-    (1, 120*mtau),
+    'lightsalmon',
+    (0.8, 1e-2),
     True,
     df_eetaugamma['ma_GeV'],
-    df_eetaugamma['cl']*mtau,
-    None
+    df_eetaugamma['gtau_20fb-1'],
+    None,
+    rotation=-30
 )
 
 eetaugamma_proj = plots.PlotData(
-    r'$e^+e^-\to \tau^+\tau^-\gamma\gamma$' + '\n' + r'(50 ab$^{-1}$)',
-    'red',
+    "",
+    'lightsalmon',
     (1, 0.75*mtau),
     False,
-    df_eetaugamma_proj['ma_GeV'],
-    df_eetaugamma_proj['cl']*mtau,
+    df_eetaugamma['ma_GeV'],
+    df_eetaugamma['gtau_50ab-1'],
     None
 )

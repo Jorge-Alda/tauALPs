@@ -14,6 +14,7 @@ class PlotData:
     inf: Sequence[float]
     sup: Sequence[float] | None
     legend: bool = False
+    rotation: float = 0
 
     def plot(self):
         if self.solid:
@@ -26,7 +27,7 @@ class PlotData:
             if self.sup is not None:
                 plt.plot(self.ma, self.sup, ls='dashed', c=self.color)
         if not self.legend:
-            plt.annotate(self.name, self.textpos, fontsize=14, c=self.color)
+            plt.annotate(self.name, self.textpos, fontsize=14, c=self.color, rotation=self.rotation)
 
 @dataclass
 class PlotDataClosed:

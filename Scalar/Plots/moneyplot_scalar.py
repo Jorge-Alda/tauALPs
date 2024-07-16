@@ -5,15 +5,6 @@ from direct_searches import eetaugamma, eetaugamma_proj ,gammainv, ee3gamma, gam
 from astro_cosmo import sn_gamma_tau, sn_nu_tau, sn_pvo_tau, sne_tau, gw_fermi_tau, gw_fireball_tau
 
 
-""" gammainv.color = 'brown'
-gammainv.textpos = (1.2e-3, 11)
-gammainv_proj.textpos = (1.2e-3, 0.36)
-gammainv_proj.color = 'brown'
-ee3gamma.color = 'lightsalmon'
-ee3gamma.textpos = (0.2, 90)
-ee3gamma_proj.color = 'lightsalmon'
-ee3gamma_proj.textpos = (0.35, 2) """
-
 if __name__ == '__main__':
     plots.make_plot([
         sn_gamma_tau, sn_nu_tau, sne_tau, gw_fireball_tau,
