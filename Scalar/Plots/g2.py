@@ -14,9 +14,9 @@ BelleII_g2tau = plots.PlotData(
 )
 
 ATLAS_g2tau = plots.PlotData(
-    r'$(g-2)_\tau$' + '\n(ATLAS, ' + r'$q\bar{q}\to \tau^+\tau^-$)',
+    r'$(g-2)_\tau$ (ATLAS, ' + r'$q\bar{q}\to \tau^+\tau^-$)',
     'purple',
-    (1.2e-3, 0.5),
+    (1.2e-3, 0.15),
     True,
     df_g2_tau['ma_GeV'],
     df_g2_tau['c_g2tau_ATLAS'],

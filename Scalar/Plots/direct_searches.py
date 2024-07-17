@@ -14,7 +14,7 @@ df_eetaugamma = pd.read_csv('../data/direct_searches/tautaugammagamma.csv')
 gammainv = plots.PlotData(
     r'$e^+e^-\to \gamma +$ inv',
     'brown',
-    (3e-3, 0.9e-1),
+    (0.5e-1, 0.7),
     True,
     df_gammainv.loc[df_gammainv['ma_GeV']<0.85]['ma_GeV'],
     df_gammainv.loc[df_gammainv['ma_GeV']<0.85]['gtau_20fb-1'],
@@ -22,9 +22,9 @@ gammainv = plots.PlotData(
 )
 
 gammainv_proj = plots.PlotData(
-    r'$e^+e^-\to \gamma +$ inv' + '\n' + r'  (50 ab$^{-1}$)',
+    r'$e^+e^-\to \gamma +$ inv  (50 ab$^{-1}$)',
     'brown',
-    (1.1e-3, 1.2e-2),
+    (1.1e-3, 2.8e-2),
     False,
     df_gammainv['ma_GeV'],
     df_gammainv['gtau_50ab-1'],
@@ -34,7 +34,7 @@ gammainv_proj = plots.PlotData(
 ee3gamma = plots.PlotData(
     r'$e^+e^-\to 3\gamma$',
     'red',
-    (1.2, 3.2),
+    (1.2, 5),
     True,
     df_ee3gamma['ma_GeV'],
     df_ee3gamma['gtau_20fb-1'],
