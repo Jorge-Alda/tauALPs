@@ -16,6 +16,9 @@ df_BaBar_gammaALP = pd.read_csv('../data/direct_searches/BaBar_darkphoton_N.csv'
 df_gammainv = pd.read_csv('../data/direct_searches/gammainv.csv')
 df_ee3gamma = pd.read_csv('../data/direct_searches/ee3gamma.csv')
 df_eetaugamma = pd.read_csv('../data/direct_searches/tautaugammagamma.csv')
+df_gammainv_c0 = pd.read_csv('../data/direct_searches/gammainv_c0.csv')
+df_ee3gamma_c0 = pd.read_csv('../data/direct_searches/ee3gamma_c0.csv')
+df_eetaugamma_c0 = pd.read_csv('../data/direct_searches/tautaugammagamma_c0.csv')
 
 Belle_tautauALP = plots.PlotData(
     r'$e^+e^-\to \tau^+\tau^- \ell^+\ell^-$' + '\n(Belle)',
@@ -117,6 +120,67 @@ eetaugamma_proj = plots.PlotData(
     None
 )
 
+gammainv_c0 = plots.PlotData(
+    r'$e^+e^-\to \gamma +$ inv',
+    'slategray',
+    (3e-3, 16),
+    True,
+    df_gammainv_c0.loc[df_gammainv_c0['ma_GeV']<0.075]['ma_GeV'],
+    df_gammainv_c0.loc[df_gammainv_c0['ma_GeV']<0.075]['ctau_20fb-1'],
+    df_gammainv_c0.loc[df_gammainv_c0['ma_GeV']<0.075]['ctau_3m']
+)
+
+gammainv_proj_c0 = plots.PlotData(
+    r'$e^+e^-\to \gamma +$ inv' + '\n' + r'  (50 ab$^{-1}$)',
+    'slategray',
+    (3e-3, 2e-1),
+    False,
+    df_gammainv_c0['ma_GeV'],
+    df_gammainv_c0['ctau_50ab-1'],
+    df_gammainv_c0['ctau_3m']
+)
+
+ee3gamma_c0 = plots.PlotData(
+    r'$e^+e^-\to 3\gamma$',
+    'teal',
+    (1.6e-1, 20),
+    True,
+    df_ee3gamma_c0['ma_GeV'],
+    df_ee3gamma_c0['ctau_20fb-1'],
+    None
+)
+
+ee3gamma_proj_c0 = plots.PlotData(
+    r'$e^+e^-\to 3\gamma$' +'\n' + r'(50 ab$^{-1}$)',
+    'teal',
+    (1.8e-1, 1.2),
+    False,
+    df_ee3gamma_c0['ma_GeV'],
+    df_ee3gamma_c0['ctau_50ab-1'],
+    None
+)
+
+eetaugamma_c0 = plots.PlotData(
+    r'$e^+e^-\to \tau^+\tau^-\gamma\gamma$',
+    'purple',
+    (1.05, 9),
+    True,
+    df_eetaugamma_c0['ma_GeV'],
+    df_eetaugamma_c0['ctau_20fb-1'],
+    None
+)
+
+eetaugamma_proj_c0 = plots.PlotData(
+    r'$e^+e^-\to \tau^+\tau^-\gamma\gamma$' + '\n' + r'(50 ab$^{-1}$)',
+    'purple',
+    (0.7, 6e-1),
+    False,
+    df_eetaugamma_c0['ma_GeV'],
+    df_eetaugamma_c0['ctau_50ab-1'],
+    None
+)
+
 if __name__ == '__main__':
     plots.make_plot([Belle_tautauALP, BelleII_tautauALP, BelleII_mumuALP, BaBar_gammaALP], 'direct_searches.pdf', r'\ell')
-    plots.make_plot([ee3gamma, ee3gamma_proj, eetaugamma, eetaugamma_proj, gammainv, gammainv_proj], 'BelleII_tau.pdf', r'\tau', limx=(1e-3, 10), limy=(0.1 ,1e3))
+    plots.make_plot([ee3gamma, ee3gamma_proj, eetaugamma, eetaugamma_proj, gammainv, gammainv_proj], 'BelleII_tau.pdf', r'\tau', limx=(1e-3, 10), limy=(0.1 ,1e3), annotate_args={'text': r'$c_{\gamma\gamma}^0 = 0$', 'xy': (3, 0.15), 'fontsize': 14})
+    plots.make_plot([ee3gamma_c0, ee3gamma_proj_c0, eetaugamma_c0, eetaugamma_proj_c0, gammainv_c0, gammainv_proj_c0], 'BelleII_tau_c0.pdf', r'\tau', limx=(1e-3, 10), limy=(0.1 ,1e3), annotate_args={'text': r'$c_{\gamma\gamma}^0 = 5c_\tau$', 'xy': (3, 0.15), 'fontsize': 14})
