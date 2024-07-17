@@ -86,7 +86,8 @@ def make_plot(plots: Iterable[PlotData],
               limx: tuple[float] = (1e-3, 1000),
               limy: tuple[float] = (5e-2, 1e5),
               legend: bool = False,
-              legend_args = {}
+              legend_args = {},
+              annotate_args = {}
              ):
     fig = plt.figure(figsize=(8, 6))
     for pl in plots:
@@ -109,6 +110,8 @@ def make_plot(plots: Iterable[PlotData],
         plt.legend(**legend_args)
     plt.fill_between(limx, [sqrt(8*pi/3)*1000/1.77,sqrt(8*pi/3)*1000/1.77], [limy[1], limy[1]], color='none', edgecolor='gray', hatch='/')
     plt.tight_layout(pad=0.5)
+    if "text" in annotate_args.keys() and "xy" in annotate_args.keys():
+        plt.annotate(**annotate_args)
     plt.savefig(filepath)
 
 def make_plot_tau(plots: Iterable[PlotData],
