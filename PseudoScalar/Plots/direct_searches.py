@@ -11,6 +11,15 @@ df_gammainv = pd.read_csv('../data/direct_searches/gammainv.csv')
 df_ee3gamma = pd.read_csv('../data/direct_searches/ee3gamma.csv')
 df_eetaugamma = pd.read_csv('../data/direct_searches/tautaugammagamma.csv')
 
+gammainv_BaBar = plots.PlotData(
+    r'$e^+e^-\to \gamma +$ inv',
+    'brown',
+    (1.3e-2, 8e-2),
+    True,
+    df_gammainv.loc[df_gammainv['ma_GeV']<0.75]['ma_GeV'],
+    df_gammainv.loc[df_gammainv['ma_GeV']<0.75]['gtau_BaBar'],
+    df_gammainv.loc[df_gammainv['ma_GeV']<0.75]['gtau_3m']
+)
 
 gammainv = plots.PlotData(
     r'$e^+e^-\to \gamma +$ inv',
@@ -30,6 +39,16 @@ gammainv_proj = plots.PlotData(
     df_gammainv['ma_GeV'],
     df_gammainv['gtau_50ab-1'],
     df_gammainv['gtau_3m']
+)
+
+ee3gamma_445pb = plots.PlotData(
+    r'$e^+e^-\to 3\gamma$',
+    'red',
+    (1.3, 4),
+    True,
+    df_ee3gamma['ma_GeV'],
+    df_ee3gamma['gtau_445pb-1'],
+    None
 )
 
 ee3gamma = plots.PlotData(
@@ -64,11 +83,12 @@ eetaugamma = plots.PlotData(
 )
 
 eetaugamma_proj = plots.PlotData(
-    "",
+    r'$e^+e^-\to \tau^+\tau^-\gamma\gamma$',
     'lightsalmon',
-    (1, 0.75*mtau),
+    (0.8, 1e-2),
     False,
     df_eetaugamma['ma_GeV'],
     df_eetaugamma['gtau_50ab-1'],
-    None
+    None,
+    rotation = -30
 )

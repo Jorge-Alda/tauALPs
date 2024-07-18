@@ -60,6 +60,16 @@ BaBar_gammaALP = plots.PlotData(
     None
 )
 
+gammainv_BaBar = plots.PlotData(
+    r'$e^+e^-\to \gamma +$ inv',
+    'slategray',
+    (3e-3, 16),
+    True,
+    df_gammainv.loc[df_gammainv['ma_GeV']<0.55]['ma_GeV'],
+    df_gammainv.loc[df_gammainv['ma_GeV']<0.55]['ctau_BaBar'],
+    df_gammainv.loc[df_gammainv['ma_GeV']<0.55]['ctau_3m']
+)
+
 gammainv = plots.PlotData(
     r'$e^+e^-\to \gamma +$ inv',
     'slategray',
@@ -78,6 +88,16 @@ gammainv_proj = plots.PlotData(
     df_gammainv['ma_GeV'],
     df_gammainv['ctau_50ab-1'],
     df_gammainv['ctau_3m']
+)
+
+ee3gamma_445pb = plots.PlotData(
+    r'$e^+e^-\to 3\gamma$',
+    'teal',
+    (0.9, 400),
+    True,
+    df_ee3gamma['ma_GeV'],
+    df_ee3gamma['ctau_445pb-1'],
+    None
 )
 
 ee3gamma = plots.PlotData(
