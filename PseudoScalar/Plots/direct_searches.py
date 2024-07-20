@@ -73,7 +73,7 @@ ee3gamma_proj = plots.PlotData(
 
 eetaugamma = plots.PlotData(
     r'$e^+e^-\to \tau^+\tau^-\gamma\gamma$',
-    'lightsalmon',
+    'xkcd:pumpkin orange',
     (0.8, 1e-2),
     True,
     df_eetaugamma['ma_GeV'],
@@ -84,7 +84,7 @@ eetaugamma = plots.PlotData(
 
 eetaugamma_proj = plots.PlotData(
     r'$e^+e^-\to \tau^+\tau^-\gamma\gamma$',
-    'lightsalmon',
+    'xkcd:pumpkin orange',
     (0.8, 1e-2),
     False,
     df_eetaugamma['ma_GeV'],
