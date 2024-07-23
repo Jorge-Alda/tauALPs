@@ -14,6 +14,8 @@ if __name__ == '__main__':
     eetaugamma_proj.name = ''
     BaBar_Y3Stau.name = ''
     BelleII_gammatau.name = ''
+    gammainv_proj.textpos = (3e-3, 5e-3)
+    gammainv_proj.name = r'$e^+e^-\to\gamma +$ inv.' + r' (Belle II 50 ab$^{-1}$)'
     plots.make_plot([
         sn_gamma_tau, sn_nu_tau, sne_tau, gw_fireball_tau,
         BelleII_g2tau, ATLAS_g2tau,
@@ -28,7 +30,7 @@ if __name__ == '__main__':
     eetaugamma_proj.textpos = (1.6, 0.4e-1)
     eetaugamma_proj.rotation = -40
     gammainv_BaBar.textpos = (1.7e-1, 0.13)
-    gammainv_proj.textpos = (1.7e-1, 5e-3)
+    gammainv_proj.textpos = (1.7e-1, 7e-3)
     ATLAS_g2tau.textpos = (1.1e-1, 3.9e-1)
     ATLAS_g2tau.name = r'$(g-2)_\tau$ (ATLAS)'
     BelleII_g2tau.textpos = (1.1e-1, 1.5e-2)
@@ -37,7 +39,6 @@ if __name__ == '__main__':
     BESIII_gammainv.name = r'$J/\psi\to\gamma + $ inv. (BESIII)'
     BESIII_3gamma.name = r'$J/\psi\to3\gamma$ (BESIII)'
     eetaugamma_proj.name = r'$e^+e^-\to\tau^+\tau^-\gamma\gamma$' + '\n' + r'(Belle II 50 ab$^{-1}$)'
-    gammainv_proj.name = r'$e^+e^-\to\gamma +$ inv.' + '\n' + r'(Belle II 50 ab$^{-1}$)'
     BaBar_Y3Stau.name = r'$\Upsilon(3S)\to\gamma\tau^+\tau^-$' + '\n(BaBar)'
     BelleII_gammatau.name = r'$e^+e^-\to\gamma\tau^+\tau^-$'+ '\n' + r'(Belle II 50 ab$^{-1}$)'
     plots.make_plot([
