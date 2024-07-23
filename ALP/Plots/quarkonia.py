@@ -19,6 +19,9 @@ df_BaBar_Y3Smu_cgg = pd.read_csv('../data/quarkonia/BaBar_Y3Smumu_cgg.csv')
 df_BelleII_Y4S3g_lfu_cgg = pd.read_csv('../data/quarkonia/BelleII_Y4S3g_lfu_cgg.csv')
 df_BaBar_Y3Stau_tp_cgg = pd.read_csv('../data/quarkonia/BaBar_Y3Stautau_tp_cgg.csv')
 df_BelleII_Y4S3g_tau_cgg = pd.read_csv('../data/quarkonia/BelleII_Y4S3g_tau_cgg.csv')
+df_BESIII_3gamma = pd.read_csv('../data/quarkonia/BESIII_3gamma.csv')
+df_BESIII_gammainv = pd.read_csv('../data/quarkonia/BESIII_gammainv.csv')
+df_BelleII_gammatau = pd.read_csv('../data/quarkonia/BelleII_4S_gammatau.csv')
 
 Belle_Y1Stau = plots.PlotData(
     r'$\Upsilon(1S)\to\gamma a(\to\tau^+\tau^-)$' + '\n(Belle)',
@@ -26,8 +29,9 @@ Belle_Y1Stau = plots.PlotData(
     (0.8, 3e3),
     True,
     df_Belle_Y1Stau['ma_GeV'],
-    df_Belle_Y1Stau['cl'],
-    None
+    df_Belle_Y1Stau['gtau'],
+    None,
+    rescale=False
 )
 
 BaBar_Y1Stau = plots.PlotData(
@@ -51,13 +55,14 @@ BaBar_Y1Smu = plots.PlotData(
 )
 
 BaBar_Y3Stau = plots.PlotData(
-    r'$\Upsilon(3S)\to\gamma\tau^+\tau^-$',
-    'tab:green',
-    (1.2, 100),
+    r'$\Upsilon(3S)\to\gamma \tau^+\tau^-$',
+    'sienna',
+    (1.8, 3e-1),
     True,
     df_BaBar_Y3Stau['ma_GeV'],
-    df_BaBar_Y3Stau['cl'],
-    None
+    df_BaBar_Y3Stau['gtau'],
+    None,
+    rescale=False
 )
 
 Belle_Y1Smu = plots.PlotData(
@@ -165,7 +170,7 @@ BaBar_Y3Stau_cgg = plots.PlotDataGauge(
     'tab:green',
     (1.2, 100),
     df_BaBar_Y3Stau['ma_GeV'],
-    df_BaBar_Y3Stau['cl'],
+    df_BaBar_Y3Stau['gtau'],
     df_BaBar_Y3Stau_cgg['cl+gg0'],
     df_BaBar_Y3Stau_cgg['cl-gg0'],
     None
@@ -198,7 +203,7 @@ BaBar_Y3Stau_tp_cgg = plots.PlotDataGauge(
     'tab:green',
     (1.2, 100),
     df_BaBar_Y3Stau['ma_GeV'],
-    df_BaBar_Y3Stau['cl'],
+    df_BaBar_Y3Stau['gtau'],
     df_BaBar_Y3Stau_tp_cgg['cl+gg0'],
     df_BaBar_Y3Stau_tp_cgg['cl-gg0'],
     None
@@ -213,6 +218,39 @@ BelleII_Y4S3g_tau_cgg = plots.PlotDataGauge(
     df_BelleII_Y4S3g_tau_cgg['cl+gg0'],
     df_BelleII_Y4S3g_tau_cgg['cl-gg0'],
     None
+)
+
+BESIII_3gamma = plots.PlotData(
+    r'$J/\psi\to3\gamma$',
+    'deeppink',
+    (0.32, 0.42),
+    True,
+    df_BESIII_3gamma['ma_GeV'],
+    df_BESIII_3gamma['gtau'],
+    None,
+    rescale=False
+)
+
+BESIII_gammainv = plots.PlotData(
+    r'$J/\psi\to3\gamma$',
+    'darkred',
+    (0.11, 0.22),
+    True,
+    df_BESIII_gammainv['ma_GeV'],
+    df_BESIII_gammainv['gtau'],
+    df_BESIII_gammainv['gtau_7m'],
+    rescale=False
+)
+
+BelleII_gammatau = plots.PlotData(
+    r'$e^+e^-\to\gamma\tau^+\tau^-$',
+    'sienna',
+    (3.8, 3e-2),
+    False,
+    df_BelleII_gammatau['ma_GeV'],
+    df_BelleII_gammatau['gtau'],
+    None,
+    rescale=False
 )
 
 if __name__ == '__main__':

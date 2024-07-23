@@ -131,9 +131,17 @@ def make_plot_tau(plots: Iterable[PlotData],
             pl.inf = array(pl.inf)*mtau
         if pl.sup is None:
             pl.sup = [1.02*limy[1]]*len(pl.ma)
-        elif pl.rescale:
-            pl.sup = array(pl.sup)*mtau
+            no_sup = True
+        else:
+            if pl.rescale:
+                pl.sup = array(pl.sup)*mtau
+            no_sup = False
         pl.plot()
+        if pl.rescale:
+            pl.inf = array(pl.inf)/mtau
+            pl.sup = array(pl.sup)/mtau
+        if no_sup:
+            pl.sup = None
     ax = plt.gca()
     ax.set_xscale('log')
     ax.set_yscale('log')

@@ -32,7 +32,7 @@ sn_gamma_lfu = plots.PlotDataClosed(
 )
 
 sn_nu_lfu = plots.PlotDataClosed(
-    'SN 1987A\n' + r'$\nu$ signal',
+    'SN 1987A\n' + r'$\nu$ cooling',
     'yellowgreen',
     (1e-2, 1),
     True,
@@ -89,7 +89,7 @@ sn_gamma_tau = plots.PlotDataClosed(
 )
 
 sn_nu_tau = plots.PlotDataClosed(
-    'SN 1987A\n' + r'$\nu$ signal',
+    'SN 1987A\n' + r'$\nu$ cooling',
     'yellowgreen',
     (0.2, 0.8),
     True,
