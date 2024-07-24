@@ -43,7 +43,7 @@ gammainv_proj = plots.PlotData(
 ee3gamma_445pb = plots.PlotData(
     r'$e^+e^-\to 3\gamma$',
     'red',
-    (1.2, 1.9),
+    (0.2, 0.97),
     True,
     df_ee3gamma['ma_GeV'],
     df_ee3gamma['gtau_445pb-1'],
@@ -53,7 +53,7 @@ ee3gamma_445pb = plots.PlotData(
 ee3gamma = plots.PlotData(
     r'$e^+e^-\to 3\gamma$',
     'red',
-    (1, 5),
+    (0.2, 0.95),
     True,
     df_ee3gamma['ma_GeV'],
     df_ee3gamma['gtau_20fb-1'],
@@ -63,12 +63,11 @@ ee3gamma = plots.PlotData(
 ee3gamma_proj = plots.PlotData(
     r'$e^+e^-\to 3\gamma$' +'\n' + r'(50 ab$^{-1}$)',
     'red',
-    (1.55, 0.83e-1),
+    (0.4, 4e-2),
     False,
     df_ee3gamma['ma_GeV'],
     df_ee3gamma['gtau_50ab-1'],
-    None,
-    rotation=-35
+    None
 )
 
 eetaugamma = plots.PlotData(
@@ -85,10 +84,9 @@ eetaugamma = plots.PlotData(
 eetaugamma_proj = plots.PlotData(
     r'$e^+e^-\to \tau^+\tau^-\gamma\gamma$',
     'xkcd:pumpkin orange',
-    (1.3, 2.6e-2),
+    (1.1, 1.3e-3),
     False,
     df_eetaugamma['ma_GeV'],
     df_eetaugamma['gtau_50ab-1'],
-    None,
-    rotation=-35
+    None
 )

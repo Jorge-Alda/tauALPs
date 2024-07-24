@@ -223,7 +223,7 @@ BelleII_Y4S3g_tau_cgg = plots.PlotDataGauge(
 BESIII_3gamma = plots.PlotData(
     r'$J/\psi\to3\gamma$',
     'deeppink',
-    (1.1, 0.45),
+    (0.3, 0.45),
     True,
     df_BESIII_3gamma['ma_GeV'],
     df_BESIII_3gamma['gtau'],

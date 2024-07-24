@@ -20,7 +20,7 @@ Belle_Y1Stau = plots.PlotData(
 BaBar_Y3Stau = plots.PlotData(
     r'$\Upsilon(3S)\to\gamma \tau^+\tau^-$',
     'sienna',
-    (1.8, 3e-1),
+    (0.7, 3e-1),
     True,
     df_BaBar_Y3Stau['ma_GeV'],
     df_BaBar_Y3Stau['gtau'],
@@ -50,7 +50,7 @@ BESIII_3gamma = plots.PlotData(
 BESIII_gammainv = plots.PlotData(
     r'$J/\psi\to3\gamma$',
     'darkred',
-    (0.15, 0.07),
+    (1.2e-3, 0.3),
     True,
     df_BESIII_gammainv['ma_GeV'],
     df_BESIII_gammainv['gtau'],
@@ -60,7 +60,7 @@ BESIII_gammainv = plots.PlotData(
 BelleII_gammatau = plots.PlotData(
     r'$e^+e^-\to\gamma\tau^+\tau^-$',
     'sienna',
-    (3.8, 3e-2),
+    (1.5, 3e-2),
     False,
     df_BelleII_gammatau['ma_GeV'],
     df_BelleII_gammatau['gtau'],
