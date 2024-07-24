@@ -1,12 +1,12 @@
 import plots
 
-from g2 import BelleII_g2tau, ATLAS_g2tau
+from g2 import BelleII_g2tau, CMS_g2tau
 from direct_searches import eetaugamma, eetaugamma_proj, gammainv_BaBar, ee3gamma_445pb, gammainv_proj, ee3gamma_proj
 from astro_cosmo import sn_gamma_tau, sn_nu_tau, sn_pvo_tau, sne_tau, gw_fermi_tau, gw_fireball_tau
 from quarkonia import BaBar_Y3Stau, Belle_Y1Stau_proj, BESIII_3gamma, BESIII_gammainv, BelleII_gammatau
 
 if __name__ == '__main__':
-    ATLAS_g2tau.name = ''
+    CMS_g2tau.name = ''
     ee3gamma_445pb.name = ''
     ee3gamma_proj.name = ''
     BESIII_gammainv.name = ''
@@ -18,7 +18,7 @@ if __name__ == '__main__':
     gammainv_proj.name = r'$e^+e^-\to\gamma +$ inv.' + r' (Belle II 50 ab$^{-1}$)'
     plots.make_plot([
         sn_gamma_tau, sn_nu_tau, sne_tau, gw_fireball_tau,
-        BelleII_g2tau, ATLAS_g2tau,
+        BelleII_g2tau, CMS_g2tau,
         eetaugamma_proj, BelleII_gammatau,
         BaBar_Y3Stau, BESIII_3gamma, BESIII_gammainv, #BelleII_gammatau,
         ee3gamma_445pb, gammainv_proj, ee3gamma_proj
@@ -31,8 +31,8 @@ if __name__ == '__main__':
     eetaugamma_proj.rotation = -40
     gammainv_BaBar.textpos = (1.7e-1, 0.13)
     gammainv_proj.textpos = (1.7e-1, 7e-3)
-    ATLAS_g2tau.textpos = (1.1e-1, 3.9e-1)
-    ATLAS_g2tau.name = r'$(g-2)_\tau$ (ATLAS)'
+    CMS_g2tau.textpos = (1.1e-1, 3.9e-1)
+    CMS_g2tau.name = r'$(g-2)_\tau$ (CMS)'
     BelleII_g2tau.textpos = (1.1e-1, 1.5e-2)
     ee3gamma_445pb.name = r'$e^+e^-\to3\gamma$ (Belle II)'
     ee3gamma_proj.name = r'$e^+e^-\to3\gamma$' + '\n' + r'(Belle II 50 ab$^{-1}$)'
@@ -43,7 +43,7 @@ if __name__ == '__main__':
     BelleII_gammatau.name = r'$e^+e^-\to\gamma\tau^+\tau^-$'+ '\n' + r'(Belle II 50 ab$^{-1}$)'
     plots.make_plot([
         sn_gamma_tau, sn_nu_tau, sne_tau, gw_fireball_tau,
-        BelleII_g2tau, ATLAS_g2tau,
+        BelleII_g2tau, CMS_g2tau,
         eetaugamma_proj, BelleII_gammatau,
         BaBar_Y3Stau, BESIII_3gamma, BESIII_gammainv, #BelleII_gammatau,
         ee3gamma_445pb, gammainv_proj, ee3gamma_proj

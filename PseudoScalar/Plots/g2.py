@@ -24,3 +24,13 @@ ATLAS_g2tau = plots.PlotData(
     df_g2tau['c_g2tau_ATLAS'],
     None
 )
+
+CMS_g2tau = plots.PlotData(
+    r'$(g-2)_\tau$' + '\n(ATLAS, ' + r'$q\bar{q}\to \tau^+\tau^-$)',
+    'purple',
+    (1.5e-3, 0.25),
+    True,
+    df_g2tau['ma_GeV'],
+    df_g2tau['c_g2tau_CMS24'],
+    None
+)

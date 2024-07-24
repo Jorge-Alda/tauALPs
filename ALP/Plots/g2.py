@@ -110,7 +110,7 @@ BelleII_g2tau_tau = plots.PlotData(
     (1.5e-3, 1.8),
     False,
     df_g2_tau_tau['ma_GeV'],
-    df_g2_tau_tau['ctau_BelleII'],
+    df_g2_tau_tau['c_g2tau_BelleII'],
     None
 )
 
@@ -120,7 +120,17 @@ ATLAS_g2tau_tau = plots.PlotData(
     (5e-3, 250),
     True,
     df_g2_tau_tau['ma_GeV'],
-    df_g2_tau_tau['ctau_ATLAS'],
+    df_g2_tau_tau['c_g2tau_ATLAS'],
+    None
+)
+
+CMS_g2tau_tau = plots.PlotData(
+    r'$(g-2)_\tau$' + '\n(ATLAS, ' + r'$q\bar{q}\to \tau^+\tau^-$)',
+    'darkred',
+    (5e-3, 250),
+    True,
+    df_g2_tau_tau['ma_GeV'],
+    df_g2_tau_tau['c_g2tau_CMS24'],
     None
 )
 
