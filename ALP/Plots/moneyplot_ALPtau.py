@@ -51,7 +51,7 @@ if __name__ == '__main__':
     gammainv_proj.textpos = (1.2e-1, 3.3)
     eetaugamma_proj.textpos = (1.1, 0.9)
     ee3gamma_proj.textpos = (1.3, 32)
-    ee3gamma_445pb.textpos = (1.0, 300)
+    ee3gamma_445pb.textpos = (1.0, 900)
     BaBar_Y3Stau.textpos = (2, 1.6e-1)
     plots.make_plot_tau([BelleII_g2tau_tau, CMS_g2tau_tau, gammainv_proj, ee3gamma_445pb, ee3gamma_proj, eetaugamma_proj, 
         BaBar_Y3Stau, BESIII_3gamma, BESIII_gammainv, BelleII_gammatau,], 'moneyplot_ALPtau_zoomed.pdf', limy=(1e-3, 10), limx=(1e-1, 10))

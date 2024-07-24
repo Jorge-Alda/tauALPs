@@ -60,7 +60,7 @@ BESIII_gammainv = plots.PlotData(
 BelleII_gammatau = plots.PlotData(
     r'$e^+e^-\to\gamma\tau^+\tau^-$',
     'sienna',
-    (3.8, 1e-2),
+    (3.8, 3e-2),
     False,
     df_BelleII_gammatau['ma_GeV'],
     df_BelleII_gammatau['gtau'],

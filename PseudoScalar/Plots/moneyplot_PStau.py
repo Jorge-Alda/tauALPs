@@ -25,8 +25,8 @@ if __name__ == '__main__':
         ], 'moneyplot_PStau.pdf', limy=(1e-9, 10), limx=(1e-3, 10))
     BESIII_3gamma.textpos = (0.8, 0.3)
     BaBar_Y3Stau.textpos = (3, 0.4)
-    ee3gamma_proj.textpos = (3.6,0.1)
-    ee3gamma_445pb.textpos = (1.4, 1)
+    ee3gamma_proj.textpos = (3.2,0.16)
+    ee3gamma_445pb.textpos = (1.4, 1.2)
     eetaugamma_proj.textpos = (1.6, 0.4e-1)
     eetaugamma_proj.rotation = -40
     gammainv_BaBar.textpos = (1.7e-1, 0.13)

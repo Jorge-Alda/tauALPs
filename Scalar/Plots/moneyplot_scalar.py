@@ -20,7 +20,7 @@ if __name__ == '__main__':
     plots.make_plot([
         sn_gamma_tau, sn_nu_tau, sne_tau, gw_fireball_tau,
         BelleII_g2tau, CMS_g2tau, eetaugamma_proj,
-        BaBar_Y3Stau, BESIII_3gamma, BESIII_gammainv, #BelleII_gammatau,
+        BaBar_Y3Stau, BESIII_3gamma, BESIII_gammainv, BelleII_gammatau,
         ee3gamma_445pb, gammainv_proj, ee3gamma_proj, 
         ], 'moneyplot_scalar.pdf', r'\tau', limy=(1e-9, 10), limx=(1e-3, 10))
     CMS_g2tau.name = r'$(g-2)_\tau$ (CMS)'

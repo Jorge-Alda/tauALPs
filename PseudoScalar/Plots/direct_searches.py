@@ -44,7 +44,7 @@ gammainv_proj = plots.PlotData(
 ee3gamma_445pb = plots.PlotData(
     r'$e^+e^-\to 3\gamma$',
     'red',
-    (1.1, 4),
+    (1.1, 4.5),
     True,
     df_ee3gamma['ma_GeV'],
     df_ee3gamma['gtau_445pb-1'],
