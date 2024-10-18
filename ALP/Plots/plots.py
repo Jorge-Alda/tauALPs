@@ -52,6 +52,23 @@ class PlotDataClosed:
             plt.annotate(self.name, self.textpos, fontsize=14, c=self.color)
 
 @dataclass
+class PlotDataDubious:
+    name: str
+    color: str|tuple[int, int, int]
+    textpos:tuple[int, int]
+    ma: Sequence[float]
+    inf: Sequence[float]
+    sup: Sequence[float] | None = None
+    legend: bool = False
+    rescale: bool = True
+
+    def plot(self):
+        plt.plot(self.ma, self.inf, lw=2.5, c=self.color, ls='dotted' ,label = self.name.replace('\n', ' '))
+        plt.fill_between(self.ma, self.inf*1e-4 ,self.inf, color=self.color, alpha=0.2)
+        if not self.legend:
+            plt.annotate(self.name, self.textpos, fontsize=14, c=self.color)
+
+@dataclass
 class PlotDataGauge:
     name: str
     color: str|tuple[int, int, int]

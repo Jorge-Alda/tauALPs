@@ -11,6 +11,7 @@ df_sn_pvo = pd.read_csv('../data/astro_cosmo/sn_pvo.csv')
 df_sne = pd.read_csv('../data/astro_cosmo/sne.csv')
 df_gw_fermi = pd.read_csv('../data/astro_cosmo/gw_fermi.csv')
 df_gw_fireball = pd.read_csv('../data/astro_cosmo/gw_fireball.csv')
+df_explo = pd.read_csv('../data/astro_cosmo/explo.csv')
 
 sn1987a = plots.PlotData(
     'SN 1987A\n' + r'$e^-$ cooling',
@@ -132,6 +133,14 @@ gw_fireball_tau = plots.PlotDataClosed(
     True,
     df_gw_fireball['ma_GeV'],
     df_gw_fireball['ctau_TeV-1'],
+)
+
+sn_explo_tau = plots.PlotDataDubious(
+    'SN explosion\nenergy',
+    'goldenrod',
+    (0.6, 0.5e2),
+    df_explo['ma_GeV'],
+    df_explo['ctau_TeV-1'],
 )
 
 if __name__ == '__main__':
